@@ -77,7 +77,7 @@ ACTUAL_INSTALL_PATH="$HOME/vendor/imagemagick"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export PATH=$ACTUAL_INSTALL_PATH/bin:\$PATH" >> $PROFILE_PATH
 echo "export LD_LIBRARY_PATH=$ACTUAL_INSTALL_PATH/lib:\$LD_LIBRARY_PATH" >> $PROFILE_PATH
-echo "export MAGICK_CONFIGURE_PATH=$ACTUAL_INSTALL_DIR/etc/ImageMagick" >> $PROFILE_PATH
+echo "export MAGICK_CONFIGURE_PATH=$ACTUAL_INSTALL_PATH/etc/ImageMagick" >> $PROFILE_PATH
 
 # DOWNLOAD_URL="http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz"
 
