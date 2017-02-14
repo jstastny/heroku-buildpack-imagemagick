@@ -56,8 +56,12 @@ else
 fi
 
 echo "-----> Writing policy file"
-mkdir -p $INSTALL_DIR/etc/ImageMagick
-cat > $INSTALL_DIR/policy.xml <<EOF
+CONFIG_DIR=$INSTALL_DIR/etc/ImageMagick
+mkdir -p CONFIG_DIR
+# Copy all original configuration file (TODO: this is dependent on major release number)
+cp $INSTALL_DIR/etc/ImageMagick-6/* $CONFIG_DIR/
+# Overwrite the default policy.xml
+cat > $CONFIG_DIR/policy.xml <<EOF
 <policymap>
   <policy domain="coder" rights="none" pattern="EPHEMERAL" />
   <policy domain="coder" rights="none" pattern="HTTPS" />
@@ -73,7 +77,7 @@ ACTUAL_INSTALL_PATH="$HOME/vendor/imagemagick"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export PATH=$ACTUAL_INSTALL_PATH/bin:\$PATH" >> $PROFILE_PATH
 echo "export LD_LIBRARY_PATH=$ACTUAL_INSTALL_PATH/lib:\$LD_LIBRARY_PATH" >> $PROFILE_PATH
-echo "export MAGICK_CONFIGURE_PATH=$ACTUAL_INSTALL_PATH" >> $PROFILE_PATH
+echo "export MAGICK_CONFIGURE_PATH=$CONFIG_DIR" >> $PROFILE_PATH
 
 # DOWNLOAD_URL="http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz"
 
