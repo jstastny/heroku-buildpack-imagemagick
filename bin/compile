@@ -57,7 +57,7 @@ fi
 
 echo "-----> Writing policy file"
 CONFIG_DIR=$INSTALL_DIR/etc/ImageMagick
-mkdir -p CONFIG_DIR
+mkdir -p $CONFIG_DIR
 # Copy all original configuration file (TODO: this is dependent on major release number)
 cp $INSTALL_DIR/etc/ImageMagick-6/* $CONFIG_DIR/
 # Overwrite the default policy.xml
